@@ -216,9 +216,9 @@ class Debug_Bar {
 			$class = get_class( $panel );
 			?>
 			<li><a
-				id="debug-menu-link-<?php echo esc_attr( $class ); ?>"
+				id="debug-menu-link-<?php echo esc_attr( stripslashes($class) ); ?>"
 				class="debug-menu-link<?php echo $current; ?>"
-				href="#debug-menu-target-<?php echo esc_attr( $class ); ?>">
+				href="#debug-menu-target-<?php echo esc_attr( stripslashes($class) ); ?>">
 				<?php
 				// Not escaping html here, so panels can use html in the title.
 				echo $panel->title();
@@ -236,7 +236,7 @@ class Debug_Bar {
 	foreach ( $this->panels as $panel ) :
 		$class = get_class( $panel ); ?>
 
-		<div id="debug-menu-target-<?php echo $class; ?>" class="debug-menu-target" <?php echo $current; ?>>
+		<div id="debug-menu-target-<?php echo stripslashes($class); ?>" class="debug-menu-target" <?php echo $current; ?>>
 			<?php $panel->render(); ?>
 		</div>
 
